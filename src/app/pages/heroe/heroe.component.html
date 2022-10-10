@@ -1,0 +1,66 @@
+<h1>Heroe <small>Nombre del heroe</small></h1>
+
+<div class="row text-end">
+    <div class="col ">
+        <button routerLink="/heroes"
+            class="btn btn-danger">
+            <fa-icon [icon]="faArrowLeft"></fa-icon>
+            Regresar
+        </button>
+    </div>
+</div>
+
+<div class="row animate__animated animate__fadeIn animate__slow">
+    <div class="col">
+        <form (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="mb-3">
+                <label class="form-label">FirebaseID</label>
+                <input type="text" 
+                        class="form-control" 
+                        disabled="disabled"
+                        [(ngModel)]="heroe.id"
+                        name="id"
+                        placeholder="FirebaseID">
+                <small class="form-text text-muted">Este campo es auto generado</small>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" 
+                        class="form-control" 
+                        [(ngModel)]="heroe.nombre"
+                        name="nombre"
+                        placeholder="Nombre del heroe" 
+                        required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Poder</label>
+                <input type="text" 
+                        class="form-control" 
+                        [(ngModel)]="heroe.poder"
+                        name="poder"
+                        placeholder="Poder del heroe">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Estado</label><br>
+                <button *ngIf="heroe.vivo" (click)="heroe.vivo = false" class="btn btn-outline-success w-50" type="button">
+                    <fa-icon [icon]="faSmileWink"></fa-icon>
+                    Vivo
+                </button>
+                <button *ngIf="!heroe.vivo" (click)="heroe.vivo = true" class="btn btn-outline-danger w-50" type="button">
+                    <fa-icon [icon]="faDizzy"></fa-icon>
+                    Muerto
+                </button>
+            </div>
+
+            <hr>
+
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary w-25">
+                    <fa-icon [icon]="faSave"></fa-icon>
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>
